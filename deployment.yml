@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebsite
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-website
+  template:
+    metadata:
+      name: my-website
+      labels:
+        app: my-website
+    spec:
+      containers:
+      - name: custom-image
+        image: ahmedelsayed01/website
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+          requests:
+            memory: "100Mi"
+        ports:
+        - containerPort: 80       
